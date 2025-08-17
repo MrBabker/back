@@ -59,7 +59,7 @@ router.post("/register", async (req, res) => {
 
     // تحقق أساسي من المدخلات
     if (!name || !email || !password) {
-        return res.status(400).json({ error: "Name, email, and password are required" });
+        return res.status(400).json({ error: "NAME, EMAIL, and PASSWORD are required" });
     }
 
     try {
@@ -107,12 +107,12 @@ router.post("/login", async (req, res) => {
         }
 
         if (error) {
-            return res.status(401).json({ message: "email or username or password wrong" });
+            return res.status(401).json({ message: "invalied EMAIL or USERNAME or PASSWORD !" });
         }
 
         const pass = await bcrypt.compare(password, data.password);
         if (!pass) {
-            return res.status(401).json({ message: "email or username or password wrong" });
+            return res.status(401).json({ message: "invalied EMAIL or USERNAME or PASSWORD !" });
         }
 
         // 🔹 توليد التوكن
